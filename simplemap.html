@@ -1,26 +1,17 @@
- <!DOCTYPE html>
-<html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link rel="stylesheet" href="simplemap.css">
-    </head>
-    <body>
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="simplemap.css">
+  </head>
+  <body>
         <div id="map-canvas"/>
 
-
-
-
-
+        <div id='infoboxTxt'> <div class="infoContainer"><h2>The Spoetzl Brewery</h2><div class="spacer"></div> <div class="addr">Address: 603 E Brewery St, Shiner, TX 77984</div><div class="distance">Distance: 102.2 Miles *Star* Directions *Star* Tour Hours</div></div> </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
-        <script src="simplemap.js"></script>
-    </body>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6GMmECWNZpYmfY7j9x0TvRGdsWlnMKeo&sensor=false"></script>
+        <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
+    <script src="simplemap.js"></script>
+  </body>
 </html>
