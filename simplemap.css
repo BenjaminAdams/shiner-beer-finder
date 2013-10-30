@@ -1,11 +1,33 @@
 html { height: 100% }
 body { height: 100%; margin: 0; padding: 0 }
-#map-canvas { height: 100% }
+#map-canvas { height: 500px; width:800px; }
 
-.infoContainer {
-	
-	height:200px;
-	width:300px;
+
+.infoContainer h2 {
+    color:#9c8e69;
+    text-align: center;
+    margin:35px 0 7px 0;
+    font-size:31.36px;
+}
+
+.infoContainer div {
+    color:#6b6b6b;
+    text-align: center;
+}
+.infoContainer div, .infoContainer span {
+   font-size:23px;
+}
+
+.infoContainer .addr {
+margin-top:15px;
+}
+
+.infoContainer .distance {
+margin-top:5px;
+}
+
+.infoContainer .distance img{
+margin:0 8px;
 }
 
 #infoboxTxt {
@@ -14,5 +36,19 @@ body { height: 100%; margin: 0; padding: 0 }
 
 
 .infoWindowParent {
-	color:red;
+    background-color: transparent;
+    width:620px;
+    height:290px;
+    font-size:27px;
+}
+
+.spacer {
+    width:620px;
+     background: transparent url('ruler.png') no-repeat top center;
+     height:10px;
+     text-align: center;
+}
+
+.brownInfo {
+    color:#9c8e69;
 }
