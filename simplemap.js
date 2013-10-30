@@ -23,12 +23,12 @@
     var infobox = new InfoBox({
         // content: document.getElementById("infoboxTxt"),
         content: $("#infoboxTxt").html(),
-        maxWidth: 620,
+        maxWidth: 310,
         boxStyle: {
             background: "transparent url('marker.png') no-repeat top left",
             opacity: 1,
-            width: "620px",
-            height: "290px"
+            width: "310px",
+            height: "145px"
         },
        // closeBoxMargin: "12px 4px 2px 2px",
         closeBoxURL: "1px.jpg",
