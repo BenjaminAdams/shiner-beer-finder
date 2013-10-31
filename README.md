@@ -5,12 +5,13 @@ shiner-beer-finder
 
 Declare Beerfinder
 ```js
-                             BeerMap(container, zoomLevel, startLat, startLong)
+//BeerMap(container, zoomLevel, startLat, startLong)
 var beerMap = new BeerMap("map-canvas",14, '29.4349004', '-97.1690')
 ```
 
 Add location
 ```js
+beerMap.addLocation( id, latitude, long,businessType)
 beerMap.addLocation( 1, '29.4349004', '-97.1690', 1)
 ```
 
