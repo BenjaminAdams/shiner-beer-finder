@@ -2,10 +2,10 @@
 
     var noIcon = '/1px.jpg';
 
-    var shinerLatLong = new google.maps.LatLng('29.4348004', '-97.1691');
+    var shinerLatLong = new google.maps.LatLng('29.4349004', '-97.1690');
     var mapCenter = new google.maps.LatLng('29.4348004', '-97.0691');
     myOptions = {
-        zoom: 18,
+        zoom: 17,
         center:mapCenter,
         disableDefaultUI: true,
         mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -20,9 +20,6 @@ var zoominControl = new ZoomControls(zoominDiv, map);
 
 map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(zoominDiv);
 
-
-
-
     var shinerMarker = new google.maps.Marker({
         position:shinerLatLong ,
         map: map,
@@ -32,7 +29,6 @@ map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(zoominDiv);
 
         //infobox docs: http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/docs/reference.html#InfoBoxOptions
     var infobox = new InfoBox({
-        // content: document.getElementById("infoboxTxt"),
         content: $("#infoboxTxt").html(),
         maxWidth: 310,
         boxStyle: {
@@ -41,9 +37,7 @@ map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(zoominDiv);
             width: "310px",
             height: "145px"
         },
-       // closeBoxMargin: "12px 4px 2px 2px",
         closeBoxURL: "1px.jpg",
-      //   infoBoxClearance: new google.maps.Size(1, 1)
     });
 
    infobox.open(map, shinerMarker);
