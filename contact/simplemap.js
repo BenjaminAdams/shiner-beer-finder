@@ -1,6 +1,6 @@
 (function () {
 
-    var noIcon = '/1px.jpg';
+    var noIcon = '1px.jpg';
 
     var shinerLatLong = new google.maps.LatLng('29.4349004', '-97.1690');
     var mapCenter = new google.maps.LatLng('29.4340004', '-97.1672');
@@ -42,7 +42,6 @@
     infobox.open(map, shinerMarker);
 
     google.maps.event.addListener(infobox, 'domready', function () {
-        console.log('map center')
         map.setCenter(mapCenter)
     });
 
