@@ -1,11 +1,13 @@
 (function () {
 
+ 
 
+function BeerMap(container, zoomLevel, startLat, startLong) { 
 
-function BeerMap(zoomLevel, startLat, startLong) { 
-
+    var markerList = []
     var storeIcon = 'storepin.png';
     var barIcon = 'barpin.png';
+    var activeIcon ='barpin.png';
     var mapCenter = new google.maps.LatLng(startLat, startLong)
     var startOptions = {
         zoom: zoomLevel,
@@ -13,16 +15,15 @@ function BeerMap(zoomLevel, startLat, startLong) {
         disableDefaultUI: true,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-
-    var map = new google.maps.Map(document.getElementById("map-canvas"), startOptions);
+    var map = new google.maps.Map(document.getElementById(container), startOptions);
 
 this.init = function() {
     //add custom controls
-    var zoominControl = new  this.addZoomControls();
-    map.setCenter(mapCenter)
+    this.addZoomControls();
+    this.changeCenter(mapCenter)
 }
 
- this.addLocation = function(plotLat, plotLong, businessType)
+ this.addLocation = function(locationID, plotLat, plotLong, businessType)
 {
 var latLong = new google.maps.LatLng(plotLat, plotLong)
 var icon;
@@ -38,13 +39,39 @@ default:
     icon = barIcon;
 }
 
-        var shinerMarker = new google.maps.Marker({
+        var locationMarker = new google.maps.Marker({
         position: latLong,
         map: map,
-        icon: barIcon
+        icon: icon,
+        locationID: locationID
     });
+
+        markerList.push(locationMarker)
+
+        google.maps.event.addDomListener(locationMarker, 'click', function () {
+            //alert("id=", locationID)
+            $('#theIdBox').html("You clicked ID: " +locationID)
+            locationMarker.setIcon(activeIcon)
+        });
+
 }
 
+this.clear = function(){
+
+for(var i=0; i < markerList.length;i++)
+{
+    markerList[i].setMap(null)
+}
+    markerList = []
+}
+
+this.changeZoom = function(num){
+    map.setZoom(num)
+}
+
+this.changeCenter = function(num){
+    map.setCenter(num)
+}
 
   this.addZoomControls =function(controlDiv) {
 
@@ -77,11 +104,21 @@ default:
 
     }
     this.init()
-
 }
 
-var beerMap = new BeerMap(17, '29.4349004', '-97.1690')
-beerMap.addLocation(  '29.4349004', '-97.1690', 1)
+var beerMap = new BeerMap("map-canvas",14, '29.4349004', '-97.1690')
+beerMap.addLocation( 1, '29.4349004', '-97.1690', 1)
+beerMap.addLocation( 5, '29.4349004', '-97.1590', 1)
+beerMap.addLocation( 72, '29.4339004', '-97.1690', 1)
+beerMap.addLocation( 7,'29.4349004', '-97.1490', 2)
+beerMap.addLocation( 56, '29.4349004', '-97.1390', 2)
+beerMap.addLocation( 333,'29.4349004', '-97.1290', 2)
+
+setTimeout(function(){
+ beerMap.clear()
+beerMap.addLocation( 72, '29.4339004', '-97.1690', 1)
+beerMap.addLocation( 7,'29.4349004', '-97.1490', 2)
+    },5000)
 
 }());
 
