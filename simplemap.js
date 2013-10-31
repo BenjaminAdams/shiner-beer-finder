@@ -7,10 +7,21 @@
     myOptions = {
         zoom: 18,
         center:mapCenter,
+        disableDefaultUI: true,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map(document.getElementById("map-canvas"),
         myOptions);
+
+
+//add custom controls
+var zoominDiv = document.createElement('div')
+var zoominControl = new ZoomControls(zoominDiv, map);
+
+map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(zoominDiv);
+
+
+
 
     var shinerMarker = new google.maps.Marker({
         position:shinerLatLong ,
@@ -39,21 +50,36 @@
 
 
 
-    // var infowindow = new google.maps.InfoWindow({
-    //     content: '<div id="gm_content">asdasdads</div>'
-    // });
 
-    // google.maps.event.addListener(infowindow, 'domready', function() {
-    //     var el = document.getElementById('gm_content').parentNode.parentNode.parentNode;
-    //     el.firstChild.setAttribute('class', 'closeInfoWindow');
-    //     el.firstChild.setAttribute('title', 'Close Info Window');
-    //     el = (el.previousElementSibling) ? el.previousElementSibling : el.previousSibling;
-    //     el.firstChild.parentNode.setAttribute('class', 'infoWindowContainer');
-    //     for (var i = 0; i < 11; i++) {
-    //         el = (el.previousElementSibling) ? el.previousElementSibling : el.previousSibling;
-    //         el.style.display = 'none';
-    //     }
-    // });
-    // infowindow.open(map, m16231);
+function ZoomControls(controlDiv, map) {
+  // Set CSS for the control border
+  var controlUI = document.createElement('div');
+  controlUI.style.backgroundColor = 'white';
+  controlUI.style.padding = '3px 4px 1px 3px';
+  controlUI.style.width = '23px';
+  controlUI.style.cursor = 'pointer';
+  controlUI.style.marginRight = '20px';
+  controlUI.style.marginBottom = '20px';
+  controlUI.style.textAlign = 'center';
+  var zoomIn = document.createElement('div');
+  zoomIn.innerHTML = '<img src="zoom-in.png" />';
+  var zoomOut = document.createElement('div');
+  zoomOut.innerHTML = '<img src="zoom-out.png" />';
+  controlUI.appendChild(zoomIn)
+  controlUI.appendChild(zoomOut)
+  controlDiv.appendChild(controlUI);
+
+  // Setup the click event listeners
+  google.maps.event.addDomListener(zoomIn, 'click', function() {
+    map.setZoom(map.getZoom()+1)
+  });
+  google.maps.event.addDomListener(zoomOut, 'click', function() {
+    map.setZoom(map.getZoom()-1)
+  });
+
+
+}
+
+
 
 }());
